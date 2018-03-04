@@ -1,0 +1,80 @@
+ALTER TABLE `gvausers` ADD `reputation` INT( 4 ) NOT NULL ,
+ADD `days_holidays` INT( 5 ) NOT NULL;
+ALTER TABLE `gvausers` CHANGE `reputation` `reputation` INT( 4 ) NOT NULL DEFAULT '50';
+ALTER TABLE `gvausers` CHANGE `days_holidays` `days_holidays` INT( 5 ) NOT NULL DEFAULT '0';
+
+ALTER TABLE `vampireps` ADD `alter_reputation` INT( 3 ) NOT NULL;
+ALTER TABLE `vampireps` ADD `calculado` INT( 3 ) NOT NULL DEFAULT '0' AFTER `fob` ,
+ADD `notas_validador` TEXT NOT NULL AFTER `calculado` ;
+ALTER TABLE `va_parameters` ADD `max_holidays` INT( 5 ) NOT NULL;
+
+CREATE TABLE IF NOT EXISTS `periods` (
+  `id_period` int(11) NOT NULL AUTO_INCREMENT,
+  `init_date` date NOT NULL,
+  `final_date` date NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `validated` int(11) NOT NULL,
+  PRIMARY KEY (`id_period`),
+  UNIQUE KEY `id_period` (`id_period`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `reputation_system` (
+  `reputation_id` int(11) NOT NULL AUTO_INCREMENT,
+  `active_reputation` int(11) NOT NULL,
+  `auto_update_rank_reputation_up` int(11) NOT NULL,
+  `auto_update_rank_reputation_down` int(3) NOT NULL,
+  `default_down` int(11) NOT NULL,
+  `reputation_move_arcf` int(11) NOT NULL,
+  `reputation_solic_dest` int(11) NOT NULL,
+  `reputation_vs_0_150` int(3) NOT NULL,
+  `reputation_vs_150_300` int(3) NOT NULL,
+  `reputation_vs_300_500` int(3) NOT NULL,
+  `reputation_vs_500` int(3) NOT NULL,
+  `reputation_tour` int(11) NOT NULL,
+  `reputation_default_flight` int(3) NOT NULL,
+  `days_to_inactivate` int(4) NOT NULL,
+  `percent_flights` int(11) NOT NULL DEFAULT '45',
+  `percent_visits` int(11) NOT NULL DEFAULT '30',
+  PRIMARY KEY (`reputation_id`),
+  UNIQUE KEY `reputation_id` (`reputation_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `reputation_changes` (
+  `id_change` int(11) NOT NULL,
+  `user_afected` int(11) NOT NULL,
+  `user_staff` int(11) NOT NULL,
+  `date_change` date NOT NULL,
+  `value_changed` int(11) NOT NULL,
+  `value_to_date` int(11) NOT NULL,
+  `description` text NOT NULL,
+   PRIMARY KEY (`id_change`),
+  UNIQUE KEY `id_change` (`id_change`)
+
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+INSERT INTO `reputation_system` (
+`reputation_id` ,
+`active_reputation` ,
+`auto_update_rank_reputation_up` ,
+`auto_update_rank_reputation_down` ,
+`default_down` ,
+`reputation_move_arcf` ,
+`reputation_solic_dest` ,
+`reputation_vs_0_150` ,
+`reputation_vs_150_300` ,
+`reputation_vs_300_500` ,
+`reputation_vs_500` ,
+`reputation_tour` ,
+`reputation_default_flight` ,
+`days_to_inactivate` ,
+`percent_flights` ,
+`percent_visits`
+)
+VALUES (
+NULL , '0', '75', '10', '5', '50', '75', '0', '1', '2', '3', '15', '10', '90', '45', '30'
+);
+
+UPDATE `va_parameters` SET `max_holidays` = '30' WHERE `va_parameters`.`va_parameters_id` =1;
+
+
+
