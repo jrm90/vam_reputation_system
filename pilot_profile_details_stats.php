@@ -1,0 +1,176 @@
+<div class="row">
+	<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;<?php echo PILOT_REP; ?></div>
+					<div class="container">
+					<?php
+						if($reputation<=10) { $color='danger'; 
+						}elseif($reputation>10&&$reputation<=25) { $color='warning';
+						}elseif($reputation>25&&$reputation<=75) { $color='info';
+						}elseif($reputation>75) { $color='success'; }
+						echo '<br><div class="progress"><div class="progress-bar progress-bar-'.$color.' progress-bar-striped active" role="progressbar" aria-valuenow="'.$reputation.'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;width: '.$reputation.'%">'.$reputation.'%</div></div>';
+					?>
+					<form class="form-inline" id="alter_reputation" action="./index_vam_op.php?page=alter_reputation_user" role="form" method="post">
+						<div class="form-group">
+							<label for="alter_reputation" class="col-4 col-form-label">Alterar Rating del piloto: </label>
+							<div class="col-8">
+								<input class="form-control" type="number" name="alter_reputation" value="<?php echo $alter_reputation; ?>" min="-100" max="100" id="alter_reputation">
+							</div>
+						</div>
+						<div class="form-group">
+						<input class="hidden" id="userid" name="userid" value="<?php echo $userid; ?>" hidden>
+						<input class="hidden" id="flightid" name="flightid" value="<?php echo $vamflightid; ?>" hidden>
+						<input type="submit" class="btn btn-primary" id="alt_reputation" value="Alterar">
+						</div>
+					</form>
+					<br>	
+				</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><IMG src="images/icons/ic_person_white_18dp_1x.png">&nbsp;<?php echo PILOT_PROFILE; ?></h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<tr>
+						<td colspan="2">
+							<?php if (strlen ($pilot_image)<=10)
+							{
+								$pilot_image="./uploads/pilot_default.png";
+							}
+							echo '<img src='.$pilot_image.' width="100%" >'; ?>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+	</div>
+		<div class="col-md-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><IMG src="images/icons/ic_person_white_18dp_1x.png">&nbsp;<?php echo PILOT_PROFILE; ?></h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<tr>
+						<td><?php echo PILOT_NAME; ?></td>
+						<td><?php echo $pilotname . ' ' . $pilotsurname; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_CALLSIGN; ?></td>
+						<td><?php echo $callsign; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_COUNTRY; ?></td>
+						<td><?php echo $country; ?>
+							<?php echo '<img src="./images/country-flags/' . $country_flag . '.png" alt="' . $country_flag . '">' ?>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_CITY; ?></td>
+						<td><?php echo $city; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_HUB; ?></td>
+						<td><?php echo $hub;?>
+						<?php if (isset($hub_airport_flag))
+						{
+							echo '<img src="./images/country-flags/' . $hub_airport_flag . '.png" alt="' . $hub_airport_flag . '">';
+						} ?>
+						<?php if (isset($hub_airport_name))
+						{
+							echo '<font size="1">&nbsp;'.str_replace ("Airport","",$hub_airport_name).'</font>';
+						} ?>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_LOCATION; ?></td>
+						<td><?php echo strtoupper($location); ?>
+							<?php echo '<img src="./images/country-flags/' . $location_airport_flag . '.png" alt="' . $location_airport_flag . '">' ?>
+							<?php echo '<font size="1">&nbsp;'.str_replace("Airport","",$location_airport_name).'</font>'; ?>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_RANK; ?></td>
+						<td><?php echo '<img src="'.$rank_url_image.'" alt="some_text">&nbsp;' ?><?php echo $rank; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_SALARY; ?></td>
+						<td><?php echo $salary_hour; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_MONEY; ?></td>
+						<td><?php echo $money . ' ' . $currency;; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_REGISTERDATE; ?></td>
+						<td><?php echo $register_date; ?></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="clearfix visible-lg"></div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><IMG src="images/icons/ic_equalizer_white_18dp_1x.png">&nbsp;<?php echo PILOT_STATICS; ?></h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<tr>
+						<td><?php echo PILOT_FLIGHTS; ?></td>
+						<td><?php echo $num_fsacars + $num_fskeeper + $num_pireps + $num_vamacars - $num_fsacars_rejected - $num_fskeeper_rejected - $num_pireps_rejected - $num_vamacars_rejected; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_HOURS; ?></td>
+						<td><?php echo convertTime(($transfered_hours + $gva_hours),$va_date_format); ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_DISTANCE; ?></td>
+						<td><?php echo $dist_pireps + $dist_fskeeper + $dist_fsacars  + $dist_vamacars - $dist_pireps_rejected - $dist_fskeeper_rejected - $dist_fsacars_rejected - $dist_vamacars_rejected; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_FLIGHTSREGULAR; ?></td>
+						<td><?php echo $num_pireps_reg + $num_fskeeper_reg + $num_fsacars_reg + $num_vamacars_reg - $num_pireps_reg_rejected - $num_fskeeper_reg_rejected - $num_fsacars_reg_rejected - $num_vamacars_reg_rejected; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_FLIGHTSCHARTER; ?></td>
+						<td><?php echo $num_pireps + $num_fskeeper + $num_fsacars + $num_vamacars - $num_pireps_reg - $num_fskeeper_reg - $num_fsacars_reg - $num_vamacars_reg - $num_fsacars_rejected - $num_fskeeper_rejected - $num_pireps_rejected - $num_vamacars_rejected - $num_pireps_reg_rejected - $num_fskeeper_reg_rejected - $num_fsacars_reg_rejected - $num_vamacars_reg_rejected; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_PERFLIGHTREGULAR; ?></td>
+						<td><?php
+								if (($num_pireps + $num_fskeeper + $num_fsacars + $num_vamacars - $num_fsacars_rejected - $num_fskeeper_rejected - $num_pireps_rejected - $num_vamacars_rejected) < 1) {
+									echo '0 %';
+								} else {
+									echo number_format((100 * ($num_pireps_reg + $num_fskeeper_reg + $num_fsacars_reg + $num_vamacars_reg - $num_pireps_reg_rejected - $num_fskeeper_reg_rejected - $num_fsacars_reg_rejected - $num_vamacars_reg_rejected)) / ($num_pireps + $num_fskeeper + $num_fsacars + $num_vamacars - $num_fsacars_rejected - $num_fskeeper_rejected - $num_pireps_rejected - $num_vamacars_rejected) , 2) . ' %';
+								};?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_MANUALREPORT; ?></td>
+						<td><?php echo $num_pireps - $num_pireps_rejected; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_FSKEEPERREPORT; ?></td>
+						<td><?php echo $num_fskeeper - $num_fskeeper_rejected; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_FSACARSREPORT; ?></td>
+						<td><?php echo $num_fsacars - $num_fsacars_rejected; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo PILOT_VAMACARSREPORT; ?></td>
+						<td><?php echo $num_vamacars - $num_vamacars_rejected; ?></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="clearfix visible-lg"></div>
+	</div>
+</div>
