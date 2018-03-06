@@ -1,5 +1,5 @@
 <?php
-				$hoy=date('Y-m-d');
+	$hoy=date('Y-m-d');
 
 	$sql = "select * from va_parameters ";
 	if (!$result = $db->query($sql)) {
@@ -65,7 +65,7 @@
 		//If-else para reputacion activa y pilotos
 		}else{
 			//IF si sube de rango con reputacion alta
-			if($rank_current<$rank_new&&$rep>$auto_update_rank_reputation_up&&$max_rank!=$rank_current) {
+			if($rank_current<$rank_new&&$rep>=$auto_update_rank_reputation_up&&$max_rank!=$rank_current) {
 				//echo ' Este tio tiene que subir de rango.';
 				if($rank_current<$max_rank) {$rank_current=$rank_current+1;}
 				$sql5 = "select rank_id,rank from ranks where rank_id='$rank_current'";
@@ -76,8 +76,8 @@
 					$rank_new= $row5['rank_id'];
 					$rank_new_name= $row5['rank'];
 				}
-				$sql3 = "update gvausers set rank_id='$rank_new',reputation='50' where gvauser_id=$pilot";
-				if (!$result3 = $db->query($sql3)) {
+				$sql6 = "update gvausers set rank_id='$rank_new',reputation='50' where gvauser_id='$pilot'";
+				if (!$result6 = $db->query($sql6)) {
 					die('There was an error running the query [' . $db->error . ']');
 				}
 				$description='Rank up ('.$rank_new_name.')';
@@ -86,7 +86,7 @@
 						die('There was an error running the query [' . $db->error . ']');
 					}
 			//ELSE-IF si baja de rengo por reputacion baja
-			}elseif($rep<=$auto_update_rank_reputation_down&&$min_rank!=$rank_current) {
+			}elseif($rank_current>$rank_new&&$rep<=$auto_update_rank_reputation_down&&$min_rank!=$rank_current) {
 				//echo ' Este tio tiene que bajar de rango.';
 				if($rank_current>$min_rank) {$rank_current=$rank_current-1;}
 				$sql5 = "select rank_id,rank from ranks where rank_id='$rank_current'";
@@ -97,7 +97,7 @@
 					$rank_new= $row5['rank_id'];
 					$rank_new_name= $row5['rank'];
 				}
-				$sql3 = "update gvausers set rank_id='$rank_new',reputation='20' where gvauser_id=$pilot";
+				$sql3 = "update gvausers set rank_id='$rank_new',reputation='20' where gvauser_id='$pilot'";
 				if (!$result3 = $db->query($sql3)) {
 					die('There was an error running the query [' . $db->error . ']');
 				}
@@ -111,12 +111,4 @@
 
 	//Aqui cierra la llave del while con los datos de los pilotos
 	}
-
-			/*$sql3 = "update gvausers set rank_id=$rank_new where gvauser_id=$pilot";
-			if (!$result3 = $db->query($sql3)) {
-				die('There was an error running the query [' . $db->error . ']');
-			}
-
-			UPDATE gvausers SET rank_id=1,reputation=76 WHERE user_type_id=2 
-			*/
 ?>
