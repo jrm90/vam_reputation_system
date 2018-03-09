@@ -76,5 +76,5 @@ NULL , '0', '75', '10', '5', '50', '75', '0', '1', '2', '3', '15', '10', '90', '
 
 UPDATE `va_parameters` SET `max_holidays` = '30' WHERE `va_parameters`.`va_parameters_id` =1;
 
-
+ALTER TABLE `periods` ADD `days` INT( 15 ) NOT NULL;
 
