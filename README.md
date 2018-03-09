@@ -32,3 +32,8 @@ De igual forma sucede si la reputación baja, el piloto descenderá de rango ind
 El sistema está pensado para que la reputación sólo baje del 10% en casos de inactividad continuada. Aún no se ha probado con 
 efectividad, por lo que puede fallar. En caso de inactividad continuada, el sistema envía una alerta a los staff notificando 
 de la inactividad del piloto para que se tomen medidas.
+
+
+BUGFIXES:
+
+- Now pilots cant view the block where the reputation is changed in their profiles. Only for staff with pilot_manager status.
