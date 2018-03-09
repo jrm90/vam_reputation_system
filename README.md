@@ -40,3 +40,4 @@ BUGFIXES:
 
 CHANGELOG:
 - Added a new icon for holidays in pilot options.
+- Added the list of new values of the system in the page of VA Parameters.
