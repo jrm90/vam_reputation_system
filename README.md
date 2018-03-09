@@ -37,3 +37,6 @@ de la inactividad del piloto para que se tomen medidas.
 BUGFIXES:
 
 - Now pilots cant view the block where the reputation is changed in their profiles. Only for staff with pilot_manager status.
+
+CHANGELOG:
+- Added a new icon for holidays in pilot options.
