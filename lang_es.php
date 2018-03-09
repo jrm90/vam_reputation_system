@@ -787,20 +787,24 @@ Recibirá un email una vez finalizada la validación. (Asegurese de poder recibi
 	define('DAYS_OF_HOLIDAYS_REQ','Dias requeridos');
 	define('STATISTICS_REP','Cambios de reputación');
 	define('STATISTICS_REP_VAR','Variación de reputación');
+	define('REP_SYSTEM','Sistema de Reputación');
+	define('REP_RANK_UP','Reputación para subir de rango');
+	define('REP_RANK_DOWN','Reputación para bajar de rango');
+	define('REP_MOVE_ARCF','Reputación para mover aeronaves');
+	define('REP_REQ_DEST','Reputación para solicitar destinos');
+	define('REP_0_150','Penalización reputación VS entre 0 y 150');
+	define('REP_150_300','Penalización reputación VS entre 150 y 300');
+	define('REP_300_500','Penalización reputación VS entre 300 y 500');
+	define('REP_500','Penalización reputación VS mayor de 500');
+	define('REP_TOUR','Reputación añadida por cada tour');
+	define('REP_DEF_FLIGHT','Reputación por defecto de cada vuelo');
+	define('REP_DAYS_INACTIVATE','Días para bajar la reputación por inactividad');
+	define('REP_PERCENT_FLIGHT','Porcentaje de valor en reputación de vuelos');
+	define('REP_PERCENT_LOGIN','Porcentaje de valor en reputación de visitas');
 
 	//Pagina de actividad de pilotos
 	define('LAST_FLIGHT', 'Último vuelo');
 	define('LAST_LOGIN_WEB', 'Última vez en la web');
 	define('LAST_LOGIN_FORUM', 'Última vez en el foro');
 
-	//Main body text
-	define('WELCOME_TEXT','<p>Clickair Virtual Airlines, o Clickair-VA, es una entidad sin &aacute;nimo de lucro, organizaci&oacute;n que agrupa a usuarios de simuladores y redes de vuelo on line y que pertenecen a un sistema basado en la gesti&oacute;n de una aerol&iacute;nea virtual; Clickair VA fue aerol&iacute;nea virtual oficial de Clickair S.A, hasta su desaparici&oacute;n, esto quiere decir que oper&oacute; y opera con permiso de la compa&ntilde;&iacute;a real, para usar su nombre (de forma virtual) su marca, logo, etc. siempre con la marca VA (Virtual Airlines)</p>
-		<p>Clickair Virtual Airlines pone a disposici&oacute;n de sus pilotos virtuales una serie de sistemas inform&aacute;ticos de gran complejidad para simular en conjunto las operaciones reales de la compa&ntilde;&iacute;a y operaciones alternativas, bien con sistemas propios o bien con sistemas de terceros; todo ello logra un realismo fiel en cuanto a la simulaci&oacute;n de vuelo, gesti&oacute;n de la VA, sistemas de pilotos, rutas, flota, y todo lo que ata&ntilde;e a una compa&ntilde;&iacute;a a&eacute;rea.</p>
-		<div class="embed-responsive embed-responsive-16by9">
-		<iframe class="embed-responsive-item" src="images/slider/10.jpg"></iframe>
-		</div>
-		<p>&nbsp;</p>
-		<p>Clickair Virtual naci&oacute; en 2006, al igual que ocurri&oacute; con la compa&ntilde;&iacute;a real. Posteriormente, sobre el 2014, la compa&ntilde;&iacute;a virtual Vueling se hizo cargo de la gesti&oacute;n y administraci&oacute;n de Clickair. Recientemente, en el primer trimestre de 2015, Clickair Virtual reinicia sus operaciones bajo nueva direcci&oacute;n.&nbsp;</p>
-		<p>Los principios de Clickair Virtual se han mantenido firmes hasta la fecha, pero en esta nueva andadura se est&aacute;n ampliando los objetivos de la aerol&iacute;nea para hacerla llegar a un p&uacute;blico m&aacute;s amplio.</p>
-		<p>Tienen toda la informaci&oacute;n en las distintas p&aacute;ginas de Clickair Virtual:&nbsp;<a href="http://www.clickair-va.com/foros" target="_blank">foro</a>,&nbsp;<a href="https://www.facebook.com/clickairVA" target="_blank">p&aacute;gina de Facebook</a>&nbsp;y&nbsp;<a href="https://twitter.com/ClickairVA" target="_blank">Twitter.</a></p>');
 ?>
